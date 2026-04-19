@@ -5,24 +5,34 @@ import { Atom } from '../components/visuals/Atom.jsx'
 const TITLE = 'Ch. 7 — Periodic Trends'
 
 function ScreeningDiagram() {
+  // Na: 2 e⁻ (K shell, n=1), 8 e⁻ (L shell, n=2), 1 e⁻ valence (M shell, n=3)
+  const cx = 160
+  const cy = 100
+  const rK = 35
+  const rL = 65
+  const rM = 95
   return (
     <svg viewBox="0 0 320 200" width="300" height="190">
-      <circle cx={160} cy={100} r={90} fill="none" stroke="#94a3b8" strokeDasharray="4 3" />
-      <circle cx={160} cy={100} r={55} fill="none" stroke="#94a3b8" strokeDasharray="4 3" />
-      <circle cx={160} cy={100} r={18} fill="#fde68a" stroke="#b45309" />
-      <text x={160} y={105} textAnchor="middle" fontSize="14" fontWeight="700" fill="#7c2d12">+11</text>
-      {/* core electrons */}
-      {[-1, 0, 1].map((k, i) => (
-        <circle key={`c${i}`} cx={160 + Math.cos((i * 120 + 40) * Math.PI / 180) * 55} cy={100 + Math.sin((i * 120 + 40) * Math.PI / 180) * 55} r={6} fill="#60a5fa" />
+      {/* shells */}
+      <circle cx={cx} cy={cy} r={rM} fill="none" stroke="#94a3b8" strokeDasharray="4 3" />
+      <circle cx={cx} cy={cy} r={rL} fill="none" stroke="#94a3b8" strokeDasharray="4 3" />
+      <circle cx={cx} cy={cy} r={rK} fill="none" stroke="#94a3b8" strokeDasharray="4 3" />
+      {/* nucleus */}
+      <circle cx={cx} cy={cy} r={18} fill="#fde68a" stroke="#b45309" />
+      <text x={cx} y={cy + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill="#7c2d12">+11</text>
+      {/* K shell: 2 core electrons */}
+      {[0, 180].map((ang, i) => (
+        <circle key={`k${i}`} cx={cx + Math.cos((ang * Math.PI) / 180) * rK} cy={cy + Math.sin((ang * Math.PI) / 180) * rK} r={5} fill="#60a5fa" />
       ))}
-      {[-1, 0, 1, 2, 3, 4, 5].map((k, i) => (
-        <circle key={`c2${i}`} cx={160 + Math.cos((i * 51 + 10) * Math.PI / 180) * 55} cy={100 + Math.sin((i * 51 + 10) * Math.PI / 180) * 55} r={5} fill="#60a5fa" />
+      {/* L shell: 8 core electrons spaced 45° apart */}
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((ang, i) => (
+        <circle key={`l${i}`} cx={cx + Math.cos((ang * Math.PI) / 180) * rL} cy={cy + Math.sin((ang * Math.PI) / 180) * rL} r={5} fill="#60a5fa" />
       ))}
-      {/* valence 3s */}
-      <circle cx={160 + 90} cy={100} r={6} fill="#ef4444" />
-      <text x={160 + 95} y={90} fontSize="11" fill="#b91c1c" fontWeight="700">valence e⁻</text>
-      <text x={30} y={25} fontSize="11" fill="#475569" fontWeight="700">Na (Z=11)</text>
-      <text x={30} y={185} fontSize="11" fill="#475569">Z* felt by valence ≈ 11 − 10 = 1</text>
+      {/* M shell: 1 valence electron */}
+      <circle cx={cx + rM} cy={cy} r={6} fill="#ef4444" />
+      <text x={cx + rM + 6} y={cy - 6} fontSize="11" fill="#b91c1c" fontWeight="700">3s e⁻</text>
+      <text x={10} y={22} fontSize="11" fill="#475569" fontWeight="700">Na (Z=11): 2 + 8 core + 1 valence</text>
+      <text x={10} y={192} fontSize="11" fill="#475569">Z* felt by 3s electron ≈ 11 − 10 = +1</text>
     </svg>
   )
 }

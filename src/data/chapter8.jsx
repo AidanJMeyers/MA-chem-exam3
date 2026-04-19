@@ -390,8 +390,8 @@ export const CHAPTER_8 = {
         </>
       ),
       visuals: [
-        { render: () => <Molecule {...LEWIS.PCl5} caption="PCl₅ — 10 e⁻ on P (expanded octet)" /> },
-        { render: () => <Molecule {...LEWIS.SF6} caption="SF₆ — 12 e⁻ on S" /> },
+        { render: () => <Molecule {...LEWIS.PCl5} width={260} height={220} caption="PCl₅ — 10 e⁻ on P (expanded octet)" /> },
+        { render: () => <Molecule {...LEWIS.SF6} width={260} height={220} caption="SF₆ — 12 e⁻ on S" /> },
         { render: () => <Molecule {...LEWIS.BF3} caption="BF₃ — B has only 6 e⁻ (incomplete octet)" /> },
       ],
     },

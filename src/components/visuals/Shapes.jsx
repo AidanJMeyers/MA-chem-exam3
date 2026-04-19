@@ -40,49 +40,23 @@ export function ShapeDiagram({ shape, central = 'A', ligand = 'X', lonePairs = 0
       lps = [pt(90, r * 0.8)]
       break
     case 'tetrahedral':
-      positions = [pt(270), pt(30), pt(150), [cx, cy - r * 1.05]]
-      // use 4 points roughly tetrahedral in 2D
+      // 4-leg 2D projection: top + bottom + two lower-flank
       positions = [
-        [cx, cy - r],
-        [cx - r * 0.95, cy + r * 0.55],
-        [cx + r * 0.95, cy + r * 0.55],
-        [cx, cy + r * 0.25],
+        [cx, cy - r],                                // top
+        [cx - r * 0.87, cy + r * 0.5],               // lower-left
+        [cx + r * 0.87, cy + r * 0.5],               // lower-right
+        [cx, cy + r],                                // straight down
       ]
       break
     case 'trigonal-bipyramidal':
+      // 2 axial + 3 equatorial spaced 120° apart
       positions = [
-        [cx, cy - r * 1.1],
-        [cx, cy + r * 1.1],
-        pt(210, r),
-        pt(-30, r),
-        [cx, cy + r * 0.1],
+        [cx, cy - r * 1.05],                         // axial up
+        [cx, cy + r * 1.05],                         // axial down
+        [cx + r * 0.95, cy],                         // eq east
+        [cx - r * 0.48, cy + r * 0.82],              // eq lower-left
+        [cx - r * 0.48, cy - r * 0.82],              // eq upper-left
       ]
-      // 3 equatorial + 2 axial
-      positions = [
-        [cx, cy - r * 1.1], // axial up
-        [cx, cy + r * 1.1], // axial down
-        [cx - r, cy + r * 0.2],
-        [cx + r, cy + r * 0.2],
-        [cx, cy - r * 0.05 + r * 0.25],
-      ]
-      positions = positions.slice(0, 5)
-      // recompute cleanly:
-      positions = [
-        [cx, cy - r * 1.05],
-        [cx, cy + r * 1.05],
-        [cx - r * 0.95, cy + r * 0.25],
-        [cx + r * 0.95, cy + r * 0.25],
-        [cx, cy - r * 0.05],
-      ]
-      // we want only 5 total (5 bond pairs)
-      positions = [
-        [cx, cy - r * 1.05],
-        [cx, cy + r * 1.05],
-        [cx - r * 0.95, cy + r * 0.25],
-        [cx + r * 0.95, cy + r * 0.25],
-        [cx + r * 0.1, cy - r * 0.05],
-      ]
-      positions = positions.slice(0, 5)
       break
     case 'seesaw':
       positions = [
