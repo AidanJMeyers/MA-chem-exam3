@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-slate-200 shadow-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply btn text-slate-700 hover:bg-slate-100;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-slate-100 text-slate-700 px-2.5 py-0.5 text-xs font-medium;
+  }
+}
+
+.confidence-1 { background-color: #ef4444; }
+.confidence-2 { background-color: #f97316; }
+.confidence-3 { background-color: #eab308; }
+.confidence-4 { background-color: #84cc16; }
+.confidence-5 { background-color: #22c55e; }
+
+.atom-C { fill: #4b5563; stroke: #1f2937; }
+.atom-O { fill: #ef4444; stroke: #991b1b; }
+.atom-N { fill: #3b82f6; stroke: #1e40af; }
+.atom-H { fill: #ffffff; stroke: #111827; }
+.atom-S { fill: #fde047; stroke: #854d0e; }
+.atom-P { fill: #fb923c; stroke: #9a3412; }
+.atom-F { fill: #86efac; stroke: #166534; }
+.atom-Cl { fill: #bef264; stroke: #3f6212; }
+.atom-Br { fill: #a16207; stroke: #713f12; }
+.atom-I { fill: #7c3aed; stroke: #4c1d95; }
+.atom-Xe, .atom-Ar, .atom-Ne, .atom-He, .atom-Kr { fill: #22d3ee; stroke: #155e75; }
+.atom-default { fill: #c7d2fe; stroke: #3730a3; }
